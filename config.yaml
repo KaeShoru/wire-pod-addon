@@ -1,5 +1,5 @@
 name: "Wire-Pod for Vector"
-version: "1.0.0"
+version: "1.0.1"
 slug: wire_pod
 description: "Free server software for Anki Vector robot with MQTT integration"
 url: "https://github.com/KaeShoru/wire-pod-addon"
