@@ -1,5 +1,5 @@
 name: "Wire-Pod for Vector"
-version: "1.0.1"
+version: "1.0.2"
 slug: wire_pod
 description: "Free server software for Anki Vector robot with MQTT integration"
 url: "https://github.com/KaeShoru/wire-pod-addon"
@@ -14,6 +14,9 @@ hassio_api: true
 hassio_role: default
 homeassistant_api: false
 host_network: true
+
+# Pre-built images from GitHub Container Registry
+image: "ghcr.io/kaeshoru/wire-pod-addon-{arch}-latest"
 
 ports:
   8080/tcp: 8080
@@ -59,7 +62,7 @@ schema:
   mqtt_discovery_prefix: str
   
   # Vector
-  vector_esn: str
+  vector_esn: str?
   vector_name: str
   
   # STT
