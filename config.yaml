@@ -23,6 +23,7 @@ privileged:
   - NET_ADMIN
 
 options:
+  # MQTT settings
   mqtt_broker_host: "core-mosquitto"
   mqtt_broker_port: 1883
   mqtt_username: ""
@@ -30,13 +31,25 @@ options:
   mqtt_topic_prefix: "homeassistant/vector"
   mqtt_discovery: true
   mqtt_discovery_prefix: "homeassistant"
+  
+  # Vector settings
   vector_esn: ""
+  vector_name: "Vector"
+  
+  # STT settings
   stt_service: "vosk"
+  vosk_model: "small-en-us"
   language: "en-US"
+  
+  # UI & telemetry
   web_ui_enabled: true
   telemetry_interval: 30
+  
+  # Debug
+  log_level: "info"
 
 schema:
+  # MQTT
   mqtt_broker_host: str
   mqtt_broker_port: port
   mqtt_username: str?
@@ -44,11 +57,22 @@ schema:
   mqtt_topic_prefix: str
   mqtt_discovery: bool
   mqtt_discovery_prefix: str
-  vector_esn: str?
+  
+  # Vector
+  vector_esn: str
+  vector_name: str
+  
+  # STT
   stt_service: list(vosk|whisper|leopard)
+  vosk_model: list(small-en-us|small-ru|model-en-us|model-ru)
   language: str
+  
+  # UI & telemetry
   web_ui_enabled: bool
   telemetry_interval: int(5,300)
+  
+  # Debug
+  log_level: list(debug|info|warn|error)
 
 map:
   - share:rw

@@ -25,15 +25,31 @@ bashio::log.info "  MQTT Broker: ${MQTT_HOST}:${MQTT_PORT}"
 bashio::log.info "  Topic Prefix: ${MQTT_PREFIX}"
 bashio::log.info "  STT Service: ${STT_SERVICE}"
 bashio::log.info "  Language: ${LANGUAGE}"
+bashio::log.info "  Vector ESN: ${VECTOR_ESN}"
 
 # Create data directories
-mkdir -p /data/wire-pod/config /data/vector/certs
+mkdir -p /data/wire-pod/config /data/vector/certs /data/vector/models
+
+# Run Vector setup (certificates + models) on first run
+if [ ! -f "/data/vector/.setup_complete" ]; then
+    bashio::log.info "First run detected. Setting up Vector..."
+    /usr/local/bin/setup-vector.sh
+    
+    # Mark setup as complete
+    touch /data/vector/.setup_complete
+    bashio::log.info "Vector setup complete!"
+else
+    bashio::log.info "Already setup. Skipping initialization."
+fi
 
 # Generate source.sh for wire-pod
 cat > /data/wire-pod/source.sh << EOF
 export STT_SERVICE="${STT_SERVICE}"
 export USE_INBUILT_BLE="false"
 export LANGUAGE="${LANGUAGE}"
+export CERT_PATH="/data/vector/certs/cert.pem"
+export KEY_PATH="/data/vector/certs/key.pem"
+export MODEL_PATH="/data/vector/models/vosk-model-small-en-us-0.15"
 EOF
 
 chmod +x /data/wire-pod/source.sh
@@ -80,6 +96,12 @@ bashio::log.info "MQTT bridge started (PID: ${MQTT_PID})"
 
 # Wait a moment for MQTT to connect
 sleep 2
+
+# Check if we have a Vector ESN
+if [ -z "$VECTOR_ESN" ]; then
+    bashio::log.warning "No Vector ESN configured! Vector features will be limited."
+    bashio::log.warning "Please configure the Vector ESN in the add-on options."
+fi
 
 # Start wire-pod (chipper)
 bashio::log.info "Starting Wire-Pod server..."

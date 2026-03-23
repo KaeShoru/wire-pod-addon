@@ -20,6 +20,8 @@ RUN apk add --no-cache \
     wget \
     unzip \
     ca-certificates \
+    python3 \
+    py3-pip \
     && rm -rf /var/cache/apk/*
 
 WORKDIR /app
@@ -35,12 +37,16 @@ RUN go mod download
 RUN go build -tags nolibopusfile -ldflags="-s -w" -o /usr/local/bin/chipper ./cmd/vosk/main.go
 
 # Create directories
-RUN mkdir -p /data/wire-pod /data/vector /var/www/html /etc/nginx
+RUN mkdir -p /data/wire-pod /data/vector/certs /data/vector/models /var/www/html /etc/nginx
+
+# Download VOSK models on first run (via entrypoint)
+RUN mkdir -p /app/models /app/wire-pod/chipper/pkg/stt/vosk/models
 
 # Copy our custom files
 COPY run.sh /
 COPY mqtt-bridge/ /app/mqtt-bridge/
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY setup-vector.sh /usr/local/bin/
 
 # Build MQTT bridge
 WORKDIR /app/mqtt-bridge
@@ -48,7 +54,7 @@ RUN go mod tidy && \
     go build -ldflags="-s -w" -o /usr/local/bin/wire-pod-mqtt .
 
 # Make scripts executable
-RUN chmod a+x /run.sh
+RUN chmod a+x /run.sh /usr/local/bin/setup-vector.sh
 
 EXPOSE 8080 8081
 
