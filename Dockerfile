@@ -35,8 +35,8 @@ RUN git clone --depth 1 https://github.com/kercre123/wire-pod.git
 WORKDIR /app/wire-pod/chipper
 RUN go mod download
 
-# Build with noop STT (no VOSK dependency)
-RUN go build -tags nolibopusfile -ldflags="-s -w" -o /usr/local/bin/chipper ./cmd/noop/main.go
+# Build main chipper binary (default STT config)
+RUN go build -tags nolibopusfile -ldflags="-s -w" -o /usr/local/bin/chipper ./cmd/chipper/main.go
 
 # Create directories
 RUN mkdir -p /data/wire-pod /data/vector/certs /data/vector/models /var/www/html /etc/nginx
