@@ -27,15 +27,6 @@ RUN apk add --no-cache \
     ca-certificates \
     && rm -rf /var/cache/apk/*
 
-# Install VOSK C library for aarch64
-RUN mkdir -p /opt/vosk && cd /opt/vosk && \
-    wget -q https://github.com/alphacep/vosk-api/releases/download/v0.3.50/vosk-linux-aarch64-0.3.50.zip && \
-    unzip vosk-linux-aarch64-0.3.50.zip && \
-    cp libvosk.so /usr/local/lib/ && \
-    cp vosk_api.h /usr/local/include/ && \
-    ldconfig /usr/local/lib && \
-    rm -rf /opt/vosk
-
 WORKDIR /app
 
 # Clone wire-pod
@@ -54,7 +45,7 @@ RUN mkdir -p /data/wire-pod /data/vector/certs /data/vector/models /var/www/html
 
 # Copy our custom files
 COPY run.sh /
-COPY mqtt-bridge/ /app/mqtt-bridge/
+RUN go build -tags nolibopusfile -ldflags="-s -w" -o /usr/local/bin/chipper ./cmd/noop/main.go
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY setup-vector.sh /usr/local/bin/
 
