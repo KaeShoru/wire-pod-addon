@@ -1,19 +1,20 @@
-ARG BUILD_FROM
+ARG BUILD_FROM=ghcr.io/home-assistant/aarch64-base:3.18
 FROM ${BUILD_FROM}
 
-# Install dependencies
+# Install dependencies (Alpine Linux packages)
 RUN apk add --no-cache \
     go \
     git \
     build-base \
-    libopus-dev \
     opus-dev \
+    opus \
     sox-dev \
     sox \
     pkgconfig \
     avahi-dev \
     avahi \
     openssl \
+    openssl-dev \
     nginx \
     bash \
     curl \
@@ -22,6 +23,7 @@ RUN apk add --no-cache \
     ca-certificates \
     python3 \
     py3-pip \
+    py3-setuptools \
     && rm -rf /var/cache/apk/*
 
 WORKDIR /app
@@ -38,9 +40,6 @@ RUN go build -tags nolibopusfile -ldflags="-s -w" -o /usr/local/bin/chipper ./cm
 
 # Create directories
 RUN mkdir -p /data/wire-pod /data/vector/certs /data/vector/models /var/www/html /etc/nginx
-
-# Download VOSK models on first run (via entrypoint)
-RUN mkdir -p /app/models /app/wire-pod/chipper/pkg/stt/vosk/models
 
 # Copy our custom files
 COPY run.sh /
