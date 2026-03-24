@@ -183,3 +183,4 @@ data:
 ## Лицензия
 
 MIT License — см. [LICENSE](LICENSE)
+# Test workflow trigger
