@@ -26,6 +26,20 @@ RUN apk add --no-cache \
     py3-setuptools \
     && rm -rf /var/cache/apk/*
 
+# Download and build VOSK library from source
+RUN apk add --no-cache cmake \
+    && cd /tmp \
+    && git clone --depth 1 --branch v0.3.50 https://github.com/alphacep/vosk-api.git \
+    && cd vosk-api \
+    && mkdir -p build \
+    && cd build \
+    && cmake -DCMAKE_BUILD_TYPE=Release .. \
+    && make -j$(nproc) \
+    && make install \
+    && ldconfig \
+    && cd /tmp \
+    && rm -rf vosk-api
+
 WORKDIR /app
 
 # Clone wire-pod
@@ -35,8 +49,11 @@ RUN git clone --depth 1 https://github.com/kercre123/wire-pod.git
 WORKDIR /app/wire-pod/chipper
 RUN go mod download
 
-# Build main chipper binary (default STT config - coqui)
-RUN go build -tags nolibopusfile -ldflags="-s -w" -o /usr/local/bin/chipper ./cmd/coqui/main.go
+# Build with VOSK STT
+RUN CGO_ENABLED=1 \
+    CGO_CFLAGS="-I/usr/local/include" \
+    CGO_LDFLAGS="-L/usr/local/lib -lvosk -ldl -lpthread" \
+    go build -tags nolibopusfile -ldflags="-s -w" -o /usr/local/bin/chipper ./cmd/vosk/main.go
 
 # Create directories
 RUN mkdir -p /data/wire-pod /data/vector/certs /data/vector/models /var/www/html /etc/nginx
@@ -54,6 +71,9 @@ RUN go mod tidy && \
 
 # Make scripts executable
 RUN chmod a+x /run.sh /usr/local/bin/setup-vector.sh
+
+# Set library path for runtime
+ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 EXPOSE 8080 8081
 
