@@ -2,7 +2,7 @@ FROM golang:1.21 AS builder
 
 WORKDIR /app
 COPY mqtt-bridge/ .
-RUN go mod download && go mod tidy && go build -ldflags="-s -w" -o wire-pod-mqtt .
+RUN GOPROXY=direct GIT_TERMINAL_PROMPT=0 go mod download && go mod tidy && go build -ldflags="-s -w" -o wire-pod-mqtt .
 
 FROM ghcr.io/kercre123/wire-pod:main
 
