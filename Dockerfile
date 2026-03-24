@@ -35,8 +35,8 @@ RUN git clone --depth 1 https://github.com/kercre123/wire-pod.git
 WORKDIR /app/wire-pod/chipper
 RUN go mod download
 
-# Build main chipper binary (default STT config)
-RUN go build -tags nolibopusfile -ldflags="-s -w" -o /usr/local/bin/chipper ./cmd/chipper/main.go
+# Build main chipper binary (default STT config - coqui)
+RUN go build -tags nolibopusfile -ldflags="-s -w" -o /usr/local/bin/chipper ./cmd/coqui/main.go
 
 # Create directories
 RUN mkdir -p /data/wire-pod /data/vector/certs /data/vector/models /var/www/html /etc/nginx
