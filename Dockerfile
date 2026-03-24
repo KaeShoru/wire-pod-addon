@@ -1,14 +1,13 @@
 FROM ghcr.io/kercre123/wire-pod:main
 
-# Install additional dependencies for MQTT bridge
-RUN apk add --no-cache \
-    bash \
+# Install additional dependencies for MQTT bridge (Debian-based)
+RUN apt-get update && apt-get install -y \
+    golang-go \
+    git \
     curl \
     wget \
     ca-certificates \
-    go \
-    git \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/lib/apt/lists/*
 
 # Create directories for HA Add-on
 RUN mkdir -p /data/wire-pod /data/vector/certs /data/vector/models /var/www/html /etc/nginx
