@@ -2,7 +2,7 @@ FROM golang:1.21 AS builder
 
 WORKDIR /app
 COPY mqtt-bridge/ .
-RUN go build -mod=readonly -ldflags="-s -w" -o wire-pod-mqtt .
+RUN GONOSUMDB=off go build -mod=mod -ldflags="-s -w" -o wire-pod-mqtt .
 
 FROM ghcr.io/kercre123/wire-pod:main
 
