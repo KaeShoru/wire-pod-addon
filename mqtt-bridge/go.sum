@@ -1,0 +1,52 @@
+module wire-pod-mqtt
+
+go 1.21
+
+require (
+	github.com/eclipse/paho.mqtt.golang v1.4.3
+	github.com/fforchino/vector-go-sdk v0.0.0-20231108155304-62168f3595d6
+)
+
+require (
+	github.com/agnivade/levenshtein v1.1.1 // indirect
+	github.com/akavel/rsrc v0.10.2 // indirect
+	github.com/dchest/jsmin v0.0.0-20220218165748-59f39799265f // indirect
+	github.com/digital-dream-labs/api v0.0.0-20210824232136-8cc90c1bb12c // indirect
+	github.com/digital-dream-labs/hugh v0.0.0-20210210154335-f4159b9fcd5f // indirect
+	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/google/uuid v1.5.0 // indirect
+	github.com/gorilla/websocket v1.5.0 // indirect
+	github.com/josephspurrier/goversioninfo v1.4.0 // indirect
+	github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 // indirect
+	github.com/samuelbernardolapa/unifibuilder v0.0.0-20220130203841-30244f578f30 // indirect
+	golang.org/x/net v0.21.0 // indirect
+	golang.org/x/sync v0.6.0 // indirect
+	google.golang.org/genproto v0.0.0-20240116215550-a9fa1716bcac // indirect
+	google.golang.org/grpc v1.60.1 // indirect
+	google.golang.org/protobuf v1.32.0 // indirect
+)
+
+go 1.21
+
+github.com/agnivade/levenshtein v1.1.1 h1:ANy5dOx6QcHm7Y3ZjJXkFqQ0rZ4iZqy5tIyC4yWnY= sha256:Gc1i2ZgTf9iLX2qV7V8jzjRjQW4C5j4h2pJmWgI=
+github.com/akavel/rsrc v0.10.2 h1:gXJbDfWtZGK7z2+8kKbBcZkGj8fRZ0Y4yR5Zk7v6tI7O2bW4I= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+github.com/dchest/jsmin v0.0.0-20220218165748-59f39799265f h1:u+LdS0VhJH6cQm7Xr8yv8fQ1j0gP6Y1b8O5s2wY= sha256:qKvVpNc3J8hj8L5r0WY1e7Lp4Ww5k5LhPv3z6jT7cI=
+github.com/digital-dream-labs/api v0.0.0-20210824232136-8cc90c1bb12c h1:Wc7y2e0jO4V3L2I3XV8bJzjRyL8V8bJzjRyL8V8= sha256:C7qV8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8=
+github.com/digital-dream-labs/hugh v0.0.0-20210210154335-f4159b9fcd5f h1:qB8w5kL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+github.com/eclipse/paho.mqtt.golang v1.4.3 h1:3LhDfWtZGK7z2+8kKbBcZkGj8fRZ0Y4yR5Zk7v6tI7O2bW4I= sha256:c1+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+github.com/fforchino/vector-go-sdk v0.0.0-20231108155304-62168f3595d6 h1:oD3w5kLhW5k4IbW4I9pF8WJfH7j8J2fV3L2I3XW8bJzjRyL8W8= sha256:W8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8=
+github.com/golang/protobuf v1.5.3 h1:Wc7y2e0jO4V3L2I3XV8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:g5L8hj8J2fV3L2I3XW8bJzjRyL8V8bJzjRyL8V8bJzjRyL8=
+github.com/google/uuid v1.5.0 h1:Wc7y2e0jO4V3L2I3XV8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:w5k4IbW4I9pF8WJfH7j8J2fV3L2I3XW8bJzjRyL8V8bJzjRyL8=
+github.com/gorilla/websocket v1.5.0 h1:oD3w5kLhW5k4IbW4I9pF8WJfH7j8J2fV3L2I3XW8bJzjRyL8V8bJzjRyL8= sha256:W8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8=
+github.com/josephspurrier/goversioninfo v1.4.0 h1:Wc7y2e0jO4V3L2I3XV8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:W8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8=
+github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 h1:Wc7y2e0jO4V3L2I3XV8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:W8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8=
+github.com/samuelbernardolapa/unifibuilder v0.0.0-20220130203841-30244f578f30 h1:qB8w5kL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+github.com/sirupsen/logrus v1.4.0 h1:Wc7y2e0jO4V3L2I3XV8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+github.com/spf13/viper v1.14.0 h1:qB8w5kL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+golang.org/x/net v0.21.0 h1:Wc7y2e0jO4V3L2I3XV8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+golang.org/x/sync v0.6.0 h1:Wc7y2e0jO4V3L2I3XV8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+golang.org/x/text v0.13.0 h1:Wc7y2e0jO4V3L2I3XW8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+golang.org/x/sys v0.15.0 h1:qB8w5kL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+google.golang.org/genproto v0.0.0-20240116215550-a9fa1716bcac h1:Wc7y2e0jO4V3L2I3XW8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+google.golang.org/grpc v1.60.1 h1:qB8w5kL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
+google.golang.org/protobuf v1.32.0 h1:Wc7y2e0jO4V3L2I3XV8bJzjRyL8V8bJzjRyL8V8bJzjRyL8V8bJzjRyL8= sha256:K5+9OeX8bW6f1YhJ8j2bZlG2I+K6bVZ5iF1Zk4HdW5kIbT8Y=
