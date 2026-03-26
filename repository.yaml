@@ -1,5 +1,5 @@
 name: Wire-Pod for Vector
-version: 1.0.5
+version: 1.0.6
 slug: wire-pod
 description: Home Assistant Add-on for Anki Vector robot with Wire-Pod integration
 init: false
